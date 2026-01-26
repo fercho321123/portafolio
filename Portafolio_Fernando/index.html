@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brayan Jiménez | Portafolio AI & Full Stack</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root {
+            --primary: #8b5cf6; /* Violeta Eléctrico */
+            --secondary: #10b981; /* Esmeralda */
+            --bg-dark: #050508;
+            --card-bg: rgba(15, 15, 25, 0.8);
+            --border: rgba(139, 92, 246, 0.2);
+            --text: #f8fafc;
+            --text-dim: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- NUEVO FONDO ANIMADO DE PARTÍCULAS --- */
+        .bg-wrapper {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #0f172a 0%, #050508 100%);
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            filter: blur(2px);
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(-10vh) translateX(50px); opacity: 0; }
+        }
+
+        /* --- NAV --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%; z-index: 1000;
+            background: rgba(5, 5, 8, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Fira Code', monospace;
+            color: var(--primary);
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .nav-menu { display: flex; gap: 2rem; list-style: none; }
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .nav-menu a:hover { color: var(--primary); }
+
+        /* --- HERO --- */
+        section { padding: 120px 2rem 60px; max-width: 1200px; margin: 0 auto; }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            min-height: 80vh;
+        }
+
+        .hero-badge {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            border: 1px solid var(--primary);
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 { font-size: 4rem; line-height: 1; margin-bottom: 1.5rem; }
+        .gradient-text {
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* BOTONES */
+        .btn-container { display: flex; gap: 1rem; margin-top: 2rem; }
+        
+        .btn-main {
+            padding: 0.8rem 2rem;
+            border-radius: 6px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.4s;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3); }
+
+        .btn-outline { border: 1px solid var(--text-dim); color: var(--text); }
+        .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.05); }
+
+        /* FOTO */
+        .profile-wrapper img {
+            width: 100%;
+            max-width: 400px;
+            mask-image: linear-gradient(black 80%, transparent);
+            filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.2));
+        }
+
+        /* --- TECH STACK --- */
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            height: 1px;
+            flex-grow: 1;
+            background: linear-gradient(90deg, var(--border), transparent);
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tech-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        .tech-card:hover { border-color: var(--primary); background: rgba(139, 92, 246, 0.05); }
+
+        .tech-card h3 { font-size: 0.9rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
+
+        .icons-flex { display: flex; flex-wrap: wrap; gap: 15px; }
+        .icons-flex i { font-size: 1.5rem; color: var(--text-dim); transition: 0.3s; }
+        .icons-flex div:hover i { color: var(--primary); transform: scale(1.2); }
+        .icons-flex div { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+        .icons-flex span { font-size: 0.6rem; color: var(--text-dim); font-family: 'Fira Code'; }
+
+        /* PROYECTOS */
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+        }
+
+        .p-img { background: url('assets/fjonic.jpeg') center/cover; min-height: 250px; }
+        .p-content { padding: 2rem; }
+        .p-content h3 { color: var(--primary); margin-bottom: 1rem; }
+        .p-tags { display: flex; gap: 8px; margin-bottom: 1.5rem; }
+        .p-tags span { font-size: 0.6rem; border: 1px solid var(--border); padding: 2px 8px; border-radius: 4px; color: var(--secondary); }
+
+        /* RESPONSIVE */
+        @media (max-width: 850px) {
+            .hero, .project-card { grid-template-columns: 1fr; }
+            .nav-menu { display: none; }
+        }
+        .btn-main:active {
+    transform: scale(0.95);
+    background: var(--secondary);
+    color: black;
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="bg-wrapper" id="particle-container"></div>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">BRAYAN.DEV</div>
+            <ul class="nav-menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#tecnologias">Stack</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="hero-text">
+                <span class="hero-badge">INGENIERO DE SISTEMAS</span>
+                <h1>Construyendo el <span class="gradient-text">Futuro Digital</span></h1>
+                <p style="color: var(--text-dim); font-size: 1.1rem;">
+                    Especialista en desarrollo Full Stack y arquitectura de sistemas. Mi enfoque se centra en la ingeniería de soluciones escalables, dominando el ciclo de vida completo del producto. Actualmente, potencio el desarrollo web mediante la integración estratégica de Inteligencia Artificial.
+                </p>
+                <div class="btn-container">
+                    <a href="#contacto" class="btn-main btn-primary">Iniciar Proyecto <i data-lucide="arrow-right"></i></a>
+                    <a href="assets/hv.pdf" download="hv.pdf" class="btn-main btn-outline">
+                        Probar Descarga Directa <i data-lucide="download"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="profile-wrapper">
+                <img src="assets/fernando.png" alt="Brayan Jiménez" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=400&h=400'">
+            </div>
+        </section>
+
+        <section id="tecnologias">
+            <h2 class="section-title">Ecosistema Técnico</h2>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h3><i data-lucide="code"></i> Frontend & Backend</h3>
+                    <div class="icons-flex">
+                        <div><i class="devicon-typescript-plain colored"></i><span>TS</span></div>
+                        <div><i class="devicon-react-original colored"></i><span>React</span></div>
+                        <div><i class="devicon-nextjs-plain"></i><span>Next</span></div>
+                        <div><i class="devicon-nodejs-plain colored"></i><span>Node</span></div>
+                        <div><i class="devicon-django-plain colored"></i><span>Django</span></div>
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <h3><i data-lucide="brain"></i> IA & Data Science</h3>
+                    <div class="icons-flex">
+                        <div><i class="devicon-python-plain colored"></i><span>Python</span></div>
+                        <div><i class="devicon-pandas-plain colored"></i><span>Pandas</span></div>
+                        <div><i class="devicon-numpy-plain colored"></i><span>NumPy</span></div>
+                        <div><i data-lucide="binary"></i><span>Models</span></div>
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <h3><i data-lucide="database"></i> Infraestructura</h3>
+                    <div class="icons-flex">
+                        <div><i class="devicon-postgresql-plain colored"></i><span>Postgres</span></div>
+                        <div><i class="devicon-mysql-plain colored"></i><span>MySQL</span></div>
+                        <div><i class="devicon-docker-plain colored"></i><span>Docker</span></div>
+                        <div><i data-lucide="network"></i><span>Redes</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="proyectos">
+            <h2 class="section-title">Proyectos Destacados</h2>
+            <div class="project-card">
+                <div class="p-img"></div>
+                <div class="p-content">
+                    <h3>FJonic Studio Marketing</h3>
+                    <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1rem;">
+                        Plataforma integral con Landing Page corporativa y dashboard administrativo privado para gestión financiera y de clientes.
+                    </p>
+                    <div class="p-tags">
+                        <span>Next.js</span><span>Django</span><span>PostgreSQL</span><span>AI Integrated</span>
+                    </div>
+                    <div style="display: flex; gap: 15px;">
+                        <a href="https://fjonic-public.vercel.app/" target="_blank" style="color: var(--secondary); text-decoration: none; font-size: 0.8rem; font-weight: 800;">VER PROYECTO →</a>
+                        <a href="https://github.com/fercho321123/plataformaweb-FJonic-studio.git" target="_blank" style="color: var(--text-dim);"><i data-lucide="github" size="18"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto">
+            <h2 class="section-title">Contacto</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
+                <div>
+                    <p style="color: var(--text-dim); margin-bottom: 2rem;">¿Tienes una idea desafiante? Estoy listo para ayudarle a darle vida con código sólido.</p>
+                    <p><i data-lucide="mail" style="color: var(--primary)"></i> brayanjimenez3627@gmail.com</p>
+                    <p style="margin-top: 10px;"><i data-lucide="phone" style="color: var(--primary)"></i> +57 318 260 2764</p>
+                </div>
+                <form style="display: flex; flex-direction: column; gap: 1rem;">
+                    <input type="text" placeholder="Tu nombre" style="background: var(--card-bg); border: 1px solid var(--border); padding: 1rem; color: white; border-radius: 4px;">
+                    <input type="email" placeholder="Tu email" style="background: var(--card-bg); border: 1px solid var(--border); padding: 1rem; color: white; border-radius: 4px;">
+                    <textarea placeholder="Tu mensaje" rows="4" style="background: var(--card-bg); border: 1px solid var(--border); padding: 1rem; color: white; border-radius: 4px;"></textarea>
+                    <button class="btn-main btn-primary" style="border: none; cursor: pointer;">Enviar Mensaje</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        // Generador de partículas de fondo
+        const container = document.getElementById('particle-container');
+        for (let i = 0; i < 30; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            const size = Math.random() * 5 + 2 + 'px';
+            p.style.width = size;
+            p.style.height = size;
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.animationDelay = Math.random() * 20 + 's';
+            p.style.animationDuration = Math.random() * 10 + 15 + 's';
+            container.appendChild(p);
+        }
+
+        // Animación Reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.tech-card, .project-card, form').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = "translateY(30px)";
+            el.style.transition = "all 0.8s cubic-bezier(0.4, 0, 0.2, 1)";
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
