@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brayan Jiménez | Portafolio AI & Full Stack</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <title>Brayan Fernando Jiménez | Ingeniero de Sistemas & AI Specialist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <style>
         :root {
-            --primary: #8b5cf6; /* Violeta Eléctrico */
-            --secondary: #10b981; /* Esmeralda */
-            --bg-dark: #050508;
-            --card-bg: rgba(15, 15, 25, 0.8);
-            --border: rgba(139, 92, 246, 0.2);
-            --text: #f8fafc;
-            --text-dim: #94a3b8;
+            --primary: #01C38D;    
+            --secondary: #696E79;  
+            --accent: #FFFFFF;     
+            --bg-dark: #0A0E14;    
+            --bg-deep: #132D46;    
+            --card-bg: rgba(19, 45, 70, 0.5); 
+            --border: rgba(1, 195, 141, 0.2);
+            --text: #F4FEFE;
+            --text-dim: #B4C3CC;
+            --glow: rgba(1, 195, 141, 0.3);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,46 +30,29 @@
             background-color: var(--bg-dark);
             color: var(--text);
             overflow-x: hidden;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
-        /* --- NUEVO FONDO ANIMADO DE PARTÍCULAS --- */
-        .bg-wrapper {
+        #canvas-bg {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             z-index: -1;
-            background: radial-gradient(circle at 50% 50%, #0f172a 0%, #050508 100%);
-            overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, #191E29 0%, #0A0E14 100%);
         }
 
-        .particle {
-            position: absolute;
-            background: var(--primary);
-            border-radius: 50%;
-            opacity: 0.3;
-            filter: blur(2px);
-            animation: float 20s infinite linear;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
-            50% { opacity: 0.5; }
-            100% { transform: translateY(-10vh) translateX(50px); opacity: 0; }
-        }
-
-        /* --- NAV --- */
         nav {
             position: fixed;
             top: 0; width: 100%; z-index: 1000;
-            background: rgba(5, 5, 8, 0.8);
-            backdrop-filter: blur(12px);
+            background: rgba(10, 14, 20, 0.85);
+            backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--border);
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 1.2rem 2.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -76,158 +62,200 @@
             font-family: 'Fira Code', monospace;
             color: var(--primary);
             font-weight: 800;
+            font-size: 1.3rem;
             letter-spacing: -1px;
+            text-decoration: none;
         }
 
-        .nav-menu { display: flex; gap: 2rem; list-style: none; }
+        .nav-menu { display: flex; gap: 2.5rem; list-style: none; }
         .nav-menu a {
             text-decoration: none;
             color: var(--text-dim);
             font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             transition: 0.3s;
+            font-weight: 600;
         }
-        .nav-menu a:hover { color: var(--primary); }
+        .nav-menu a:hover { color: var(--primary); text-shadow: 0 0 10px var(--glow); }
 
-        /* --- HERO --- */
-        section { padding: 120px 2rem 60px; max-width: 1200px; margin: 0 auto; }
+        section { padding: 140px 2.5rem 80px; max-width: 1400px; margin: 0 auto; }
 
         .hero {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
             align-items: center;
-            min-height: 80vh;
+            min-height: 85vh;
+            gap: 4rem;
         }
 
         .hero-badge {
-            background: rgba(139, 92, 246, 0.1);
+            background: rgba(1, 195, 141, 0.1);
             color: var(--primary);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 600;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
             border: 1px solid var(--primary);
             display: inline-block;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
         }
 
-        .hero h1 { font-size: 4rem; line-height: 1; margin-bottom: 1.5rem; }
+        .hero h1 { font-size: 4.8rem; line-height: 1.1; margin-bottom: 1.5rem; font-weight: 800; }
         .gradient-text {
-            background: linear-gradient(to right, #fff, var(--primary));
+            background: linear-gradient(to right, #FFF 20%, var(--primary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* BOTONES */
-        .btn-container { display: flex; gap: 1rem; margin-top: 2rem; }
-        
+        .hero-desc {
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            max-width: 650px;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .contact-info-hero {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 3rem;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+        }
+
+        .contact-info-hero span { display: flex; align-items: center; gap: 8px; color: var(--accent); }
+
+        .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 4rem;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            font-weight: 800;
+        }
+        .section-title span { color: var(--primary); font-family: 'Fira Code'; font-size: 1.5rem; }
+        .section-title::after {
+            content: ''; height: 1px; flex-grow: 1;
+            background: linear-gradient(90deg, var(--primary), transparent);
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* PROYECTOS */
+        .project-card {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 0;
+            overflow: hidden;
+            margin-bottom: 4rem;
+        }
+        .p-img { 
+            background: linear-gradient(45deg, rgba(1,195,141,0.2), transparent), url('assets/fjonic.jpeg') center/cover; 
+            min-height: 400px;
+            border-right: 1px solid var(--border);
+        }
+        .p-content { padding: 3.5rem; display: flex; flex-direction: column; justify-content: center; }
+        .p-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 1.5rem 0 2rem; }
+        .p-tags span { font-size: 0.7rem; border: 1px solid var(--primary); padding: 4px 12px; border-radius: 4px; color: var(--primary); background: rgba(1, 195, 141, 0.05); }
+
         .btn-main {
-            padding: 0.8rem 2rem;
+            padding: 1rem 2rem;
             border-radius: 6px;
             font-weight: 700;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            transition: 0.4s;
-            font-size: 0.9rem;
-        }
-
-        .btn-primary { background: var(--primary); color: white; }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3); }
-
-        .btn-outline { border: 1px solid var(--text-dim); color: var(--text); }
-        .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.05); }
-
-        /* FOTO */
-        .profile-wrapper img {
-            width: 100%;
-            max-width: 400px;
-            mask-image: linear-gradient(black 80%, transparent);
-            filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.2));
-        }
-
-        /* --- TECH STACK --- */
-        .section-title {
-            font-size: 1.5rem;
-            margin-bottom: 3rem;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .section-title::after {
-            content: '';
-            height: 1px;
-            flex-grow: 1;
-            background: linear-gradient(90deg, var(--border), transparent);
-        }
-
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .tech-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            padding: 1.5rem;
-            border-radius: 8px;
             transition: 0.3s;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
         }
-        .tech-card:hover { border-color: var(--primary); background: rgba(139, 92, 246, 0.05); }
+        .btn-primary { background: var(--primary); color: var(--bg-dark); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(1, 195, 141, 0.3); }
 
-        .tech-card h3 { font-size: 0.9rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
-
-        .icons-flex { display: flex; flex-wrap: wrap; gap: 15px; }
-        .icons-flex i { font-size: 1.5rem; color: var(--text-dim); transition: 0.3s; }
-        .icons-flex div:hover i { color: var(--primary); transform: scale(1.2); }
-        .icons-flex div { display: flex; flex-direction: column; align-items: center; gap: 5px; }
-        .icons-flex span { font-size: 0.6rem; color: var(--text-dim); font-family: 'Fira Code'; }
-
-        /* PROYECTOS */
-        .project-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
+        /* TIMELINE */
+        .timeline { display: flex; flex-direction: column; gap: 2rem; }
+        .timeline-item { position: relative; padding-left: 30px; border-left: 2px solid var(--border); }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -7px; top: 0;
+            width: 12px; height: 12px; border-radius: 50%; background: var(--primary);
         }
 
-        .p-img { background: url('assets/fjonic.jpeg') center/cover; min-height: 250px; }
-        .p-content { padding: 2rem; }
-        .p-content h3 { color: var(--primary); margin-bottom: 1rem; }
-        .p-tags { display: flex; gap: 8px; margin-bottom: 1.5rem; }
-        .p-tags span { font-size: 0.6rem; border: 1px solid var(--border); padding: 2px 8px; border-radius: 4px; color: var(--secondary); }
+        /* TECH SKILLS GRID */
+        .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .tech-category h3 {
+            font-size: 1.1rem; color: var(--primary); margin-bottom: 2rem;
+            display: flex; align-items: center; gap: 12px; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .tech-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 15px; }
+        .tech-item {
+            background: rgba(255, 255, 255, 0.03); border: 1px solid transparent; border-radius: 12px;
+            padding: 15px 10px; text-align: center; transition: 0.3s;
+        }
+        .tech-item:hover { background: rgba(1, 195, 141, 0.08); border-color: var(--border); transform: translateY(-5px); }
+        .tech-item i { font-size: 2rem; margin-bottom: 10px; display: block; color: var(--text-dim); transition: 0.3s; }
+        .tech-item:hover i { color: var(--primary); transform: scale(1.1); }
+        .tech-item span { font-size: 0.7rem; font-family: 'Fira Code', monospace; color: var(--text-dim); }
 
-        /* RESPONSIVE */
-        @media (max-width: 850px) {
-            .hero, .project-card { grid-template-columns: 1fr; }
+        /* REFERENCES GRID */
+        .refs-container { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+        .refs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+        .ref-card { 
+            padding: 1.5rem; border-radius: 12px; background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+            display: flex; flex-direction: column; gap: 5px;
+        }
+        .ref-card strong { color: var(--accent); font-size: 1rem; }
+        .ref-card span { color: var(--primary); font-family: 'Fira Code'; font-size: 0.9rem; }
+
+        /* CONTACT FORM */
+        .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; color: var(--text-dim); font-size: 0.9rem; }
+        .form-control {
+            width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+            border-radius: 8px; color: var(--text); font-family: 'Inter', sans-serif; transition: 0.3s;
+        }
+        .form-control:focus { outline: none; border-color: var(--primary); background: rgba(1, 195, 141, 0.05); }
+        textarea.form-control { min-height: 150px; resize: vertical; }
+
+        .profile-container { position: relative; width: 100%; max-width: 450px; margin: 0 auto; }
+        .profile-container img { width: 100%; border-radius: 24px; filter: grayscale(100%); border: 1px solid var(--border); transition: 0.5s; }
+        .profile-container:hover img { filter: grayscale(0%); }
+
+        @media (max-width: 1000px) {
+            .hero, .project-card, .refs-container, .contact-container { grid-template-columns: 1fr; text-align: center; }
+            .hero h1 { font-size: 3.5rem; }
             .nav-menu { display: none; }
+            .p-img { min-height: 250px; }
         }
-        .btn-main:active {
-    transform: scale(0.95);
-    background: var(--secondary);
-    color: black;
-}
-
     </style>
 </head>
 <body>
 
-    <div class="bg-wrapper" id="particle-container"></div>
+    <canvas id="canvas-bg"></canvas>
 
     <nav>
         <div class="nav-container">
-            <div class="logo">BRAYAN.DEV</div>
+            <a href="#" class="logo">PORTAFOLIO</a>
             <ul class="nav-menu">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#tecnologias">Stack</a></li>
+                <li><a href="#perfil">Perfil</a></li>
+                <li><a href="#experiencia">Trayectoria</a></li>
                 <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#habilidades">Skills</a></li>
+                <li><a href="#formacion">Estudios</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
         </div>
@@ -236,128 +264,283 @@
     <main>
         <section id="inicio" class="hero">
             <div class="hero-text">
-                <span class="hero-badge">INGENIERO DE SISTEMAS</span>
-                <h1>Construyendo el <span class="gradient-text">Futuro Digital</span></h1>
-                <p style="color: var(--text-dim); font-size: 1.1rem;">
-                    Especialista en desarrollo Full Stack y arquitectura de sistemas. Mi enfoque se centra en la ingeniería de soluciones escalables, dominando el ciclo de vida completo del producto. Actualmente, potencio el desarrollo web mediante la integración estratégica de Inteligencia Artificial.
+                <span class="hero-badge">Ingeniero de Sistemas | Full Stack</span>
+                <h1>Brayan Fernando <br><span class="gradient-text">Jiménez Murcia</span></h1>
+                <p class="hero-desc">
+                    Especialista en desarrollo Full Stack y arquitecturas de alto impacto. Combinando la precisión contable con la ingeniería de software moderna para crear soluciones escalables.
                 </p>
-                <div class="btn-container">
-                    <a href="#contacto" class="btn-main btn-primary">Iniciar Proyecto <i data-lucide="arrow-right"></i></a>
-                    <a href="assets/hv.pdf" download="hv.pdf" class="btn-main btn-outline">
-                        Probar Descarga Directa <i data-lucide="download"></i>
-                    </a>
+                <div class="contact-info-hero">
+                    <span><i data-lucide="map-pin" size="18"></i> Bogotá, Colombia</span>
+                    <span><i data-lucide="phone" size="18"></i> +57 318 260 2764</span>
+                    <span><i data-lucide="mail" size="18"></i> brayanjimenez3627@gmail.com</span>
                 </div>
             </div>
-            <div class="profile-wrapper">
-                <img src="assets/fernando.png" alt="Brayan Jiménez" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=400&h=400'">
+            <div class="profile-container">
+                <img src="assets/fernando.png" alt="Brayan Jiménez" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=800&q=80'">
             </div>
         </section>
 
-        <section id="tecnologias">
-            <h2 class="section-title">Ecosistema Técnico</h2>
-            <div class="tech-grid">
-                <div class="tech-card">
-                    <h3><i data-lucide="code"></i> Frontend & Backend</h3>
-                    <div class="icons-flex">
-                        <div><i class="devicon-typescript-plain colored"></i><span>TS</span></div>
-                        <div><i class="devicon-react-original colored"></i><span>React</span></div>
-                        <div><i class="devicon-nextjs-plain"></i><span>Next</span></div>
-                        <div><i class="devicon-nodejs-plain colored"></i><span>Node</span></div>
-                        <div><i class="devicon-django-plain colored"></i><span>Django</span></div>
-                    </div>
-                </div>
-                <div class="tech-card">
-                    <h3><i data-lucide="brain"></i> IA & Data Science</h3>
-                    <div class="icons-flex">
-                        <div><i class="devicon-python-plain colored"></i><span>Python</span></div>
-                        <div><i class="devicon-pandas-plain colored"></i><span>Pandas</span></div>
-                        <div><i class="devicon-numpy-plain colored"></i><span>NumPy</span></div>
-                        <div><i data-lucide="binary"></i><span>Models</span></div>
-                    </div>
-                </div>
-                <div class="tech-card">
-                    <h3><i data-lucide="database"></i> Infraestructura</h3>
-                    <div class="icons-flex">
-                        <div><i class="devicon-postgresql-plain colored"></i><span>Postgres</span></div>
-                        <div><i class="devicon-mysql-plain colored"></i><span>MySQL</span></div>
-                        <div><i class="devicon-docker-plain colored"></i><span>Docker</span></div>
-                        <div><i data-lucide="network"></i><span>Redes</span></div>
-                    </div>
-                </div>
+        <section id="perfil">
+            <h2 class="section-title"><span>01.</span> Perfil Profesional</h2>
+            <div class="card">
+                <p style="font-size: 1.2rem; color: var(--text-dim);">
+                    Ingeniero en sistemas apasionado en el desarrollo Full Stack y arquitectura de sistemas con una sólida formación como Ingeniero y Tecnólogo en Análisis y Desarrollo de Software. Mi enfoque se centra en la ingeniería de soluciones escalables de alto rendimiento, dominando el ciclo de vida completo del producto desde la concepción lógica hasta el despliegue optimizado. Actualmente, potencio el desarrollo web moderno mediante la integración estratégica de Inteligencia Artificial.
+                </p>
             </div>
         </section>
 
         <section id="proyectos">
-            <h2 class="section-title">Proyectos Destacados</h2>
-            <div class="project-card">
+            <h2 class="section-title"><span>02.</span> Proyectos Destacados</h2>
+            <div class="card project-card">
                 <div class="p-img"></div>
                 <div class="p-content">
-                    <h3>FJonic Studio Marketing</h3>
-                    <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1rem;">
-                        Plataforma integral con Landing Page corporativa y dashboard administrativo privado para gestión financiera y de clientes.
+                    <h3 style="font-size: 1.8rem; color: var(--accent);">FJonic Studio Marketing</h3>
+                    <p style="color: var(--text-dim); margin-top: 1rem;">
+                        Plataforma integral que incluye Landing Page corporativa y una aplicación web privada de gestión. Módulos de proyectos, clientes, facturación electrónica y control financiero.
                     </p>
                     <div class="p-tags">
-                        <span>Next.js</span><span>Django</span><span>PostgreSQL</span><span>AI Integrated</span>
+                        <span>React</span><span>TypeScript</span><span>Node.js</span><span>Next.js</span><span>Django</span><span>Neon DB</span>
                     </div>
-                    <div style="display: flex; gap: 15px;">
-                        <a href="https://fjonic-public.vercel.app/" target="_blank" style="color: var(--secondary); text-decoration: none; font-size: 0.8rem; font-weight: 800;">VER PROYECTO →</a>
-                        <a href="https://github.com/fercho321123/plataformaweb-FJonic-studio.git" target="_blank" style="color: var(--text-dim);"><i data-lucide="github" size="18"></i></a>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <a href="https://fjonic-public.vercel.app/" target="_blank" class="btn-main btn-primary">Landing page <i data-lucide="external-link" size="16"></i></a>
+                        <a href="https://fjonic-admin.vercel.app/" target="_blank" class="btn-main btn-primary">App Privada <i data-lucide="external-link" size="16"></i></a>
+                        <a href="https://github.com/fercho321123/plataformaweb-FJonic-studio.git" target="_blank" style="color: var(--text-dim); transition: 0.3s; display: flex; align-items: center;">
+                            <i data-lucide="github" size="28"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experiencia">
+            <h2 class="section-title"><span>03.</span> Trayectoria Profesional</h2>
+            <div class="timeline">
+                <div class="card timeline-item">
+                    <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 1rem;">
+                        <strong style="font-size: 1.3rem; color: var(--accent);">Desarrollador Full Stack (Independiente)</strong>
+                        <span style="color: var(--primary); font-family: 'Fira Code';">2025 – 2026 Terminado</span>
+                    </div>
+                    <span style="display: block; color: var(--text-dim); margin-bottom: 1rem;">Agencia de Marketing Digital</span>
+                    <ul style="color: var(--text-dim); margin-left: 20px;">
+                        <li>Desarrollo de Landing Pages y dashboards administrativos privados.</li>
+                        <li>Implementación de procedimientos de instalación estandarizados.</li>
+                        <li>Gestión de facturación electrónica y control financiero preciso.</li>
+                    </ul>
+                </div>
+                <div class="card timeline-item">
+                    <div style="display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 1rem;">
+                        <strong style="font-size: 1.3rem; color: var(--accent);">Técnico de Soporte TI</strong>
+                        <span style="color: var(--primary); font-family: 'Fira Code';">2024 – 2025</span>
+                    </div>
+                    <span style="display: block; color: var(--text-dim); margin-bottom: 1rem;">NEW.COM</span>
+                    <ul style="color: var(--text-dim); margin-left: 20px;">
+                        <li>Resolución de problemas de hardware y software corporativo.</li>
+                        <li>Mantenimiento preventivo y correctivo de infraestructura de red.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="habilidades">
+            <h2 class="section-title"><span>04.</span> Habilidades Técnicas</h2>
+            <div class="tech-grid">
+                <div class="card tech-category">
+                    <h3><i data-lucide="code-2"></i> Desarrollo Web</h3>
+                    <div class="tech-list">
+                        <div class="tech-item"><i class="devicon-typescript-plain"></i><span>TypeScript</span></div>
+                        <div class="tech-item"><i class="devicon-react-original"></i><span>React</span></div>
+                        <div class="tech-item"><i class="devicon-nextjs-plain"></i><span>Next.js</span></div>
+                        <div class="tech-item"><i class="devicon-nodejs-plain"></i><span>Node.js</span></div>
+                        <div class="tech-item"><i class="devicon-html5-plain"></i><span>HTML5</span></div>
+                        <div class="tech-item"><i class="devicon-css3-plain"></i><span>CSS3</span></div>
+                        <div class="tech-item"><i class="devicon-vercel-line"></i><span>Vercel</span></div>
+                        <div class="tech-item"><i class="devicon-django-plain"></i><span>Django</span></div>
+                    </div>
+                </div>
+
+                <div class="card tech-category">
+                    <h3><i data-lucide="brain-circuit"></i> IA & Datos</h3>
+                    <div class="tech-list">
+                        <div class="tech-item"><i class="devicon-python-plain"></i><span>Python</span></div>
+                        <div class="tech-item"><i class="devicon-pandas-plain"></i><span>Pandas</span></div>
+                        <div class="tech-item"><i class="devicon-numpy-plain"></i><span>NumPy</span></div>
+                        <div class="tech-item"><i data-lucide="bot"></i><span>IA SENA</span></div>
+                    </div>
+                </div>
+
+                <div class="card tech-category">
+                    <h3><i data-lucide="database"></i> Bases de Datos</h3>
+                    <div class="tech-list">
+                        <div class="tech-item"><i class="devicon-postgresql-plain"></i><span>PostgreSQL</span></div>
+                        <div class="tech-item"><i data-lucide="box"></i><span>Neon DB</span></div>
+                        <div class="tech-item"><i class="devicon-mysql-plain"></i><span>MySQL</span></div>
+                    </div>
+                </div>
+
+                <div class="card tech-category">
+                    <h3><i data-lucide="wrench"></i> Herramientas & DevOps</h3>
+                    <div class="tech-list">
+                        <div class="tech-item"><i class="devicon-github-original"></i><span>GitHub</span></div>
+                        <div class="tech-item"><i class="devicon-postman-plain"></i><span>Postman</span></div>
+                        <div class="tech-item"><i class="devicon-firebase-plain"></i><span>Firebase</span></div>
+                        <div class="tech-item"><i data-lucide="network"></i><span>Cisco P.T.</span></div>
+                    </div>
+                </div>
+
+                <div class="card tech-category" style="grid-column: 1 / -1;">
+                    <h3><i data-lucide="cpu"></i> Infraestructura TI & Soporte</h3>
+                    <div class="tech-list" style="grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));">
+                        <div class="tech-item"><i data-lucide="hard-drive"></i><span>Hardware</span></div>
+                        <div class="tech-item"><i data-lucide="printer"></i><span>Impresoras</span></div>
+                        <div class="tech-item"><i data-lucide="monitor"></i><span>Torres/Portátiles</span></div>
+                        <div class="tech-item"><i data-lucide="lan"></i><span>Redes</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="formacion">
+            <h2 class="section-title"><span>05.</span> Formación Académica</h2>
+            <div class="timeline">
+                <div class="card timeline-item">
+                    <strong style="color: var(--accent); font-size: 1.2rem;">Ingeniería en Sistemas</strong><br>
+                    <span style="color: var(--primary);">Universidad de Cundinamarca</span>
+                    <p style="color: var(--text-dim); font-size: 0.9rem; margin-top: 5px;">Graduación 2025 / Pasantías 2027</p>
+                </div>
+                <div class="card timeline-item">
+                    <strong style="color: var(--accent); font-size: 1.2rem;">Tecnólogo en Análisis y Desarrollo de Software</strong><br>
+                    <span style="color: var(--primary);">SENA (En curso)</span>
+                </div>
+                <div class="card timeline-item">
+                    <strong style="color: var(--accent); font-size: 1.2rem;">IA para el Manejo de Datos</strong><br>
+                    <span style="color: var(--primary);">SENA (En curso)</span>
+                </div>
+                <div class="card timeline-item">
+                    <strong style="color: var(--accent); font-size: 1.2rem;">Técnico en Contabilidad y Finanzas</strong><br>
+                    <span style="color: var(--primary);">SENA</span>
+                </div>
+                <div class="card timeline-item">
+                    <strong style="color: var(--accent); font-size: 1.2rem;">Bachiller Técnico Comercial</strong><br>
+                    <span style="color: var(--primary);">Instituto Técnico Comercial de Capellanía (2020)</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="referencias">
+            <h2 class="section-title"><span>06.</span> Referencias</h2>
+            <div class="refs-container">
+                <div>
+                    <h3 style="margin-bottom: 1.5rem; color: var(--primary);"><i data-lucide="users"></i> Personales</h3>
+                    <div class="refs-grid">
+                        <div class="ref-card"><strong>Edwin Alexis Leiba Bello</strong><span>3227297639</span></div>
+                        <div class="ref-card"><strong>Jhanio Mesa</strong><span>3249673783</span></div>
+                        <div class="ref-card"><strong>Edward Nicolas Ramirez</strong><span>3022881375</span></div>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 1.5rem; color: var(--primary);"><i data-lucide="heart"></i> Familiares</h3>
+                    <div class="refs-grid">
+                        <div class="ref-card"><strong>Luz Angela Murcia Marquez</strong><span>3203525948</span></div>
+                        <div class="ref-card"><strong>Edwin Fernando Jimenez Murcia</strong><span>3045612962</span></div>
+                        <div class="ref-card"><strong>Duvan Ortiz Murcia</strong><span>3163795026</span></div>
+                        <div class="ref-card"><strong>Yuli Johana Rodriguez Benitez</strong><span>3204096794</span></div>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="contacto">
-            <h2 class="section-title">Contacto</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
-                <div>
-                    <p style="color: var(--text-dim); margin-bottom: 2rem;">¿Tienes una idea desafiante? Estoy listo para ayudarle a darle vida con código sólido.</p>
-                    <p><i data-lucide="mail" style="color: var(--primary)"></i> brayanjimenez3627@gmail.com</p>
-                    <p style="margin-top: 10px;"><i data-lucide="phone" style="color: var(--primary)"></i> +57 318 260 2764</p>
+            <h2 class="section-title"><span>07.</span> Contacto</h2>
+            <div class="contact-container">
+                <div class="hero-text">
+                    <h3 style="font-size: 2rem; margin-bottom: 1.5rem;">¿Tienes un proyecto en mente?</h3>
+                    <p style="color: var(--text-dim); margin-bottom: 2rem;">
+                        Estoy disponible para nuevos retos profesionales y colaboraciones en desarrollo web o infraestructura TI. ¡Hablemos!
+                    </p>
+                    <div class="contact-info-hero" style="flex-direction: column;">
+                        <span><i data-lucide="mail"></i> brayanjimenez3627@gmail.com</span>
+                        <span><i data-lucide="phone"></i> +57 318 260 2764</span>
+                    </div>
                 </div>
-                <form style="display: flex; flex-direction: column; gap: 1rem;">
-                    <input type="text" placeholder="Tu nombre" style="background: var(--card-bg); border: 1px solid var(--border); padding: 1rem; color: white; border-radius: 4px;">
-                    <input type="email" placeholder="Tu email" style="background: var(--card-bg); border: 1px solid var(--border); padding: 1rem; color: white; border-radius: 4px;">
-                    <textarea placeholder="Tu mensaje" rows="4" style="background: var(--card-bg); border: 1px solid var(--border); padding: 1rem; color: white; border-radius: 4px;"></textarea>
-                    <button class="btn-main btn-primary" style="border: none; cursor: pointer;">Enviar Mensaje</button>
-                </form>
+                <div class="card">
+                    <form action="https://formspree.io/f/tu-id-aqui" method="POST">
+                        <div class="form-group">
+                            <label>Nombre Completo</label>
+                            <input type="text" name="name" class="form-control" placeholder="Ej. Juan Pérez" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Correo Electrónico</label>
+                            <input type="email" name="email" class="form-control" placeholder="juan@ejemplo.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Mensaje</label>
+                            <textarea name="message" class="form-control" placeholder="¿Cómo puedo ayudarte?"></textarea>
+                        </div>
+                        <button type="submit" class="btn-main btn-primary" style="width: 100%; justify-content: center;">Enviar Mensaje <i data-lucide="send"></i></button>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
 
+    <footer style="padding: 4rem; text-align: center; color: var(--text-dim); border-top: 1px solid var(--border);">
+        <p>© 2026 Brayan Fernando Jiménez Murcia. Todos los derechos reservados.</p>
+    </footer>
+
     <script>
         lucide.createIcons();
 
-        // Generador de partículas de fondo
-        const container = document.getElementById('particle-container');
-        for (let i = 0; i < 30; i++) {
-            const p = document.createElement('div');
-            p.className = 'particle';
-            const size = Math.random() * 5 + 2 + 'px';
-            p.style.width = size;
-            p.style.height = size;
-            p.style.left = Math.random() * 100 + 'vw';
-            p.style.animationDelay = Math.random() * 20 + 's';
-            p.style.animationDuration = Math.random() * 10 + 15 + 's';
-            container.appendChild(p);
+        const canvas = document.getElementById('canvas-bg');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const mouse = { x: null, y: null, radius: 150 };
+
+        window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.8;
+                this.speedY = (Math.random() - 0.5) * 0.8;
+            }
+            update() {
+                this.x += this.speedX; this.y += this.speedY;
+                if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
+                if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+                let dx = mouse.x - this.x; let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx*dx + dy*dy);
+                if (distance < mouse.radius) { this.x -= dx/20; this.y -= dy/20; }
+            }
+            draw() { ctx.fillStyle = 'rgba(1, 195, 141, 0.4)'; ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill(); }
         }
 
-        // Animación Reveal
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = "translateY(0)";
-                }
-            });
-        }, { threshold: 0.1 });
+        function init() {
+            canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+            particles = []; for (let i = 0; i < 80; i++) particles.push(new Particle());
+        }
 
-        document.querySelectorAll('.tech-card, .project-card, form').forEach(el => {
-            el.style.opacity = 0;
-            el.style.transform = "translateY(30px)";
-            el.style.transition = "all 0.8s cubic-bezier(0.4, 0, 0.2, 1)";
-            observer.observe(el);
-        });
+        function connect() {
+            for (let a = 0; a < particles.length; a++) {
+                for (let b = a; b < particles.length; b++) {
+                    let distance = ((particles[a].x - particles[b].x)**2 + (particles[a].y - particles[b].y)**2);
+                    if (distance < (canvas.width/7) * (canvas.height/7)) {
+                        ctx.strokeStyle = `rgba(1, 195, 141, ${1 - distance/20000})`;
+                        ctx.lineWidth = 0.5; ctx.beginPath(); ctx.moveTo(particles[a].x, particles[a].y); ctx.lineTo(particles[b].x, particles[b].y); ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            connect(); requestAnimationFrame(animate);
+        }
+
+        init(); animate();
+        window.addEventListener('resize', init);
     </script>
 </body>
 </html>
