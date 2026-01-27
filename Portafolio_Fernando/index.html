@@ -31,6 +31,142 @@
             min-height: 100vh;
         }
 
+        /* ========== ANIMATED BACKGROUND ========== */
+        #animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Grid animado de fondo */
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(127, 255, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(127, 255, 0, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes gridMove {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(50px, 50px);
+            }
+        }
+
+        /* Líneas de circuito animadas */
+        .circuit-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, rgba(127, 255, 0, 0.3), transparent);
+            height: 2px;
+            width: 100%;
+            animation: circuitFlow 8s linear infinite;
+        }
+
+        .circuit-line:nth-child(1) { top: 20%; animation-delay: 0s; }
+        .circuit-line:nth-child(2) { top: 40%; animation-delay: 2s; }
+        .circuit-line:nth-child(3) { top: 60%; animation-delay: 4s; }
+        .circuit-line:nth-child(4) { top: 80%; animation-delay: 6s; }
+
+        @keyframes circuitFlow {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+
+        /* Pulsos de energía */
+        .energy-pulse {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(127, 255, 0, 0.4), transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .energy-pulse:nth-child(5) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .energy-pulse:nth-child(6) {
+            width: 400px;
+            height: 400px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0.1;
+            }
+        }
+
+        /* Códigos binarios flotantes */
+        .binary-code {
+            position: absolute;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: rgba(127, 255, 0, 0.2);
+            animation: binaryFloat 15s linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes binaryFloat {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100px) translateX(50px);
+                opacity: 0;
+            }
+        }
+
         /* ========== NAVIGATION BAR ========== */
         .navbar {
             position: fixed;
@@ -288,14 +424,14 @@
             display: flex;
             flex-direction: column;
             gap: 30px;
-            order: 2; /* Aparece después de la imagen en móvil */
+            order: 2;
         }
 
         .right-column {
             display: flex;
             flex-direction: column;
             gap: 30px;
-            order: 3; /* Aparece al final en móvil */
+            order: 3;
         }
 
         /* ========== DARK CARDS ========== */
@@ -305,6 +441,13 @@
             padding: clamp(25px, 4vw, 40px);
             backdrop-filter: blur(10px);
             width: 100%;
+            border: 1px solid rgba(127, 255, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .dark-card:hover {
+            border-color: rgba(127, 255, 0, 0.3);
+            box-shadow: 0 0 20px rgba(127, 255, 0, 0.1);
         }
 
         /* ========== SECTION TITLES ========== */
@@ -412,6 +555,7 @@
         .project-btn:hover {
             background: #6FEF00;
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(127, 255, 0, 0.3);
         }
 
         .project-btn.secondary {
@@ -461,7 +605,7 @@
             position: relative;
             max-width: 500px;
             margin: 0 auto;
-            order: 1; /* Por defecto en móvil aparece después del header */
+            order: 1;
         }
 
         .profile-image {
@@ -748,6 +892,7 @@
         .submit-btn:hover {
             background: #6FEF00;
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(127, 255, 0, 0.3);
         }
 
         /* ========== CONTACT FOOTER ========== */
@@ -1060,12 +1205,10 @@
 
         /* ========== TABLET & DESKTOP BREAKPOINTS ========== */
         @media (min-width: 768px) {
-            /* Hide mobile profile image */
             .profile-section-mobile {
                 display: none !important;
             }
 
-            /* Show desktop profile image */
             .profile-section {
                 display: block !important;
             }
@@ -1076,7 +1219,7 @@
 
             .profile-section {
                 grid-column: 1 / -1;
-                order: -1; /* En tablet, la imagen vuelve arriba */
+                order: -1;
             }
 
             .left-column {
@@ -1113,7 +1256,7 @@
 
             .profile-section {
                 grid-column: auto;
-                order: 0; /* En desktop, orden normal */
+                order: 0;
             }
 
             .project-links {
@@ -1127,12 +1270,10 @@
 
         /* ========== MOBILE SPECIFIC ========== */
         @media (max-width: 767px) {
-            /* Hide desktop profile image in mobile */
             .profile-section {
                 display: none !important;
             }
 
-            /* Show mobile profile image */
             .profile-section-mobile {
                 display: block !important;
             }
@@ -1231,14 +1372,12 @@
             }
         }
 
-        /* ========== EXTRA SMALL MOBILE ========== */
         @media (max-width: 360px) {
             .tech-grid {
                 grid-template-columns: repeat(2, 1fr) !important;
             }
         }
 
-        /* ========== TOUCH DEVICE OPTIMIZATIONS ========== */
         @media (hover: none) and (pointer: coarse) {
             .project-btn,
             .cta-btn,
@@ -1259,13 +1398,13 @@
             }
         }
 
-        /* ========== PRINT STYLES ========== */
         @media print {
             .navbar,
             .back-to-top,
             .watermark,
             .vertical-text,
-            .mobile-menu-toggle {
+            .mobile-menu-toggle,
+            #animated-bg {
                 display: none !important;
             }
 
@@ -1281,6 +1420,17 @@
     </style>
 </head>
 <body>
+    <!-- Animated Background -->
+    <div id="animated-bg">
+        <canvas class="bg-canvas" id="particleCanvas"></canvas>
+        <div class="grid-overlay"></div>
+        <div class="circuit-line"></div>
+        <div class="circuit-line"></div>
+        <div class="circuit-line"></div>
+        <div class="circuit-line"></div>
+        <div class="energy-pulse"></div>
+        <div class="energy-pulse"></div>
+    </div>
 
     <!-- Navigation Bar -->
     <nav class="navbar">
@@ -1307,7 +1457,6 @@
         <i data-lucide="arrow-up" size="24"></i>
     </button>
 
-
     <!-- Vertical Text -->
     <div class="vertical-text" aria-hidden="true">Portafolio 2026</div>
 
@@ -1321,28 +1470,30 @@
               <span>Full Stack Developer</span>
             </h1>
             
-            <!-- Profile Image in Mobile (between title and CTA) -->
+            <!-- Profile Image in Mobile -->
             <div class="profile-section-mobile">
                 <div class="profile-image-container-mobile">
                     <img src="assets/fernando.png" alt="Brayan Fernando Jiménez" class="profile-image-mobile" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=800&q=80'" loading="lazy">
                 </div>
             </div>
             
-                    <!-- Contact Info -->
-                    <div class="contact-info">
-                        <div class="contact-item-inline">
-                            <i data-lucide="map-pin" size="18"></i>
-                            <span>Bogotá, Colombia</span>
-                        </div>
-                        <div class="contact-item-inline">
-                            <i data-lucide="phone" size="18"></i>
-                            <span>+57 318 260 2764</span>
-                        </div>
-                        <div class="contact-item-inline">
-                            <i data-lucide="mail" size="18"></i>
-                            <span>brayanjimenez3627@gmail.com</span>
-                        </div>
-                    </div>        <!-- CTA Buttons -->
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <div class="contact-item-inline">
+                    <i data-lucide="map-pin" size="18"></i>
+                    <span>Bogotá, Colombia</span>
+                </div>
+                <div class="contact-item-inline">
+                    <i data-lucide="phone" size="18"></i>
+                    <span>+57 318 260 2764</span>
+                </div>
+                <div class="contact-item-inline">
+                    <i data-lucide="mail" size="18"></i>
+                    <span>brayanjimenez3627@gmail.com</span>
+                </div>
+            </div>
+            
+            <!-- CTA Buttons -->
             <div class="cta-buttons">
                 <a href="#contacto" class="cta-btn">
                     Contáctame
@@ -1784,6 +1935,109 @@
         // Initialize Lucide icons
         lucide.createIcons();
 
+        // ========== PARTICLE ANIMATION ==========
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 100;
+        const connectionDistance = 150;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 2 + 1;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(127, 255, 0, 0.5)';
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function connectParticles() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < connectionDistance) {
+                        const opacity = 1 - (distance / connectionDistance);
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(127, 255, 0, ${opacity * 0.2})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            
+            connectParticles();
+            
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Generate binary codes
+        function generateBinaryCodes() {
+            const binaryContainer = document.getElementById('animated-bg');
+            const binaryCount = 10;
+            
+            for (let i = 0; i < binaryCount; i++) {
+                const binary = document.createElement('div');
+                binary.className = 'binary-code';
+                binary.style.left = Math.random() * 100 + '%';
+                binary.style.animationDelay = Math.random() * 15 + 's';
+                
+                let code = '';
+                for (let j = 0; j < 20; j++) {
+                    code += Math.random() > 0.5 ? '1' : '0';
+                }
+                binary.textContent = code;
+                
+                binaryContainer.appendChild(binary);
+            }
+        }
+
+        generateBinaryCodes();
+
         // Remove typing cursor after animation completes
         setTimeout(() => {
             const jobTitle = document.querySelector('.job-title');
@@ -1808,7 +2062,6 @@
                 lucide.createIcons();
             });
 
-            // Close mobile menu when clicking on a link
             document.querySelectorAll('.nav-menu a').forEach(link => {
                 link.addEventListener('click', () => {
                     navMenu.classList.remove('active');
@@ -1818,7 +2071,6 @@
                 });
             });
 
-            // Close mobile menu when clicking outside
             document.addEventListener('click', (e) => {
                 if (!navMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
                     navMenu.classList.remove('active');
@@ -1936,25 +2188,21 @@
             downloadCvBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 
-                // Crear un enlace temporal para forzar la descarga
                 const link = document.createElement('a');
                 link.href = 'assets/hv.docx';
                 link.download = 'CV_Brayan_Fernando_Jimenez.pdf';
                 link.target = '_blank';
                 
-                // Agregar al documento, hacer clic y eliminar
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
                 
-                // Como fallback, abrir en nueva pestaña después de un pequeño delay
                 setTimeout(() => {
                     window.open('assets/hv.docx', '_blank');
                 }, 100);
             });
         }
 
-        // Prevent horizontal scroll
         document.body.style.overflowX = 'hidden';
     </script>
 </body>
