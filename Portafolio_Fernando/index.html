@@ -1348,7 +1348,7 @@
                     Contáctame
                     <i data-lucide="message-circle" size="18"></i>
                 </a>
-                <a href="assets/hv.pdf" target="_blank" rel="noopener noreferrer" class="cta-btn secondary download-cv">
+                <a href="assets/hv.docx" target="_blank" rel="noopener noreferrer" class="cta-btn secondary download-cv">
                     Descargar CV
                     <i data-lucide="download" size="18"></i>
                 </a>
@@ -1938,7 +1938,7 @@
                 
                 // Crear un enlace temporal para forzar la descarga
                 const link = document.createElement('a');
-                link.href = 'assets/hv.pdf';
+                link.href = 'assets/hv.docx';
                 link.download = 'CV_Brayan_Fernando_Jimenez.pdf';
                 link.target = '_blank';
                 
@@ -1949,7 +1949,7 @@
                 
                 // Como fallback, abrir en nueva pestaña después de un pequeño delay
                 setTimeout(() => {
-                    window.open('assets/hv.pdf', '_blank');
+                    window.open('assets/hv.docx', '_blank');
                 }, 100);
             });
         }
