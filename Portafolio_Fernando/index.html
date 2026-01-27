@@ -179,25 +179,60 @@
         }
 
         .job-title {
-            font-size: clamp(20px, 4vw, 36px);
-            font-weight: 800;
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(28px, 7vw, 85px);
+            font-weight: 900;
             color: #FFFFFF;
-            margin-bottom: 10px;
-            letter-spacing: -1px;
+            margin-bottom: 20px;
+            letter-spacing: clamp(-1px, -0.3vw, -2px);
+            line-height: 1.1;
             display: inline-block;
             overflow: hidden;
             border-right: 3px solid #7FFF00;
             white-space: nowrap;
             animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+            position: relative;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            max-width: 100%;
+        }
+
+        .job-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 60%;
+            height: 2px;
+            background: linear-gradient(90deg, #7FFF00 0%, transparent 100%);
+            animation: slideIn 1s ease-out 3.5s forwards;
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+
+        @keyframes slideIn {
+            to {
+                transform: scaleX(1);
+            }
         }
 
         .job-title span {
             display: block;
-            margin-top: 10px;
-            font-size: clamp(16px, 2.5vw, 24px);
-            font-weight: 400;
-            color: #FFFFFF;
+            margin-top: clamp(8px, 2vw, 12px);
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(12px, 2.8vw, 32px);
+            font-weight: 600;
+            color: #B0B0B0;
             text-transform: uppercase;
+            letter-spacing: clamp(2px, 1vw, 6px);
+            background: none;
+            text-shadow: none;
+        }
+
+        .job-title span::before {
+            content: '// ';
+            color: #7FFF00;
+            font-weight: 700;
+            margin-right: clamp(4px, 1vw, 8px);
         }
 
         @keyframes typing {
@@ -213,6 +248,31 @@
         .job-title.typed {
             border-right: none;
             animation: none;
+        }
+
+        /* Ocultar imagen móvil en desktop y tablet */
+        @media (min-width: 768px) {
+            .profile-section-mobile {
+                display: none !important;
+            }
+        }
+
+        /* Ocultar imagen del grid en móvil */
+        @media (max-width: 767px) {
+            .profile-section {
+                display: none !important;
+            }
+
+            .job-title {
+                font-size: clamp(24px, 6vw, 42px);
+                white-space: normal;
+                max-width: 100%;
+            }
+
+            .job-title::after {
+                width: 80%;
+                height: 2px;
+            }
         }
 
         /* ========== MAIN GRID ========== */
@@ -1002,7 +1062,12 @@
         @media (min-width: 768px) {
             /* Hide mobile profile image */
             .profile-section-mobile {
-                display: none;
+                display: none !important;
+            }
+
+            /* Show desktop profile image */
+            .profile-section {
+                display: block !important;
             }
 
             .main-grid {
@@ -1035,6 +1100,10 @@
                 color: rgba(255, 255, 255, 0.3);
                 text-transform: uppercase;
             }
+
+            .job-title {
+                white-space: nowrap;
+            }
         }
 
         @media (min-width: 1024px) {
@@ -1058,6 +1127,16 @@
 
         /* ========== MOBILE SPECIFIC ========== */
         @media (max-width: 767px) {
+            /* Hide desktop profile image in mobile */
+            .profile-section {
+                display: none !important;
+            }
+
+            /* Show mobile profile image */
+            .profile-section-mobile {
+                display: block !important;
+            }
+
             .nav-menu {
                 position: fixed;
                 top: 60px;
@@ -1102,6 +1181,25 @@
             .contact-item {
                 width: 100%;
                 justify-content: flex-start;
+            }
+
+            .job-title {
+                white-space: normal;
+                border-right: none;
+                animation: none;
+                text-align: center;
+            }
+
+            .job-title::after {
+                left: 50%;
+                transform: translateX(-50%) scaleX(0);
+                animation: slideInCenter 1s ease-out 0.5s forwards;
+            }
+
+            @keyframes slideInCenter {
+                to {
+                    transform: translateX(-50%) scaleX(1);
+                }
             }
         }
 
@@ -1228,6 +1326,40 @@
               Ingeniero de Sistemas
               <span>Full Stack Developer</span>
             </h1>
+            
+            <!-- Profile Image in Mobile (between title and CTA) -->
+            <div class="profile-section-mobile">
+                <div class="profile-image-container-mobile">
+                    <img src="assets/fernando.png" alt="Brayan Fernando Jiménez" class="profile-image-mobile" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=800&q=80'" loading="lazy">
+                </div>
+            </div>
+            
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <div class="contact-item-inline">
+                        <i data-lucide="map-pin" size="18"></i>
+                        <span>Bogotá, Colombia</span>
+                    </div>
+                    <div class="contact-item-inline">
+                        <i data-lucide="phone" size="18"></i>
+                        <span>+57 318 260 2764</span>
+                    </div>
+                    <div class="contact-item-inline">
+                        <i data-lucide="mail" size="18"></i>
+                        <span>brayanjimenez3627@gmail.com</span>
+                    </div>
+                </div>
+            <!-- CTA Buttons -->
+            <div class="cta-buttons">
+                <a href="#contacto" class="cta-btn">
+                    Contáctame
+                    <i data-lucide="message-circle" size="18"></i>
+                </a>
+                <a href="assets/hv.docx" target="_blank" rel="noopener noreferrer" class="cta-btn secondary download-cv">
+                    Descargar CV
+                    <i data-lucide="download" size="18"></i>
+                </a>
+            </div>
         </div>
 
         <!-- Statistics Section -->
@@ -1400,19 +1532,8 @@
                 <div class="profile-image-container">
                     <img src="assets/fernando.png" alt="Brayan Fernando Jiménez" class="profile-image" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=800&q=80'" loading="lazy">
                 </div>
-                <div class="cta-buttons">
-                    <a href="#contacto" class="cta-btn">
-                        Contáctame
-                        <i data-lucide="message-circle" size="18"></i>
-                    </a>
-                    <a href="#" class="cta-btn secondary download-cv">
-                        Descargar CV
-                        <i data-lucide="download" size="18"></i>
-                    </a>
-                </div>
-                <div>
-                    <p><br></p>
-                </div>
+
+                <!-- Contact Info -->
                 <div class="contact-info">
                     <div class="contact-item-inline">
                         <i data-lucide="map-pin" size="18"></i>
@@ -1836,12 +1957,23 @@
         const downloadCvBtn = document.querySelector('.download-cv');
         if (downloadCvBtn) {
             downloadCvBtn.addEventListener('click', (e) => {
-                // Uncomment and add your CV URL when ready
-                // e.preventDefault();
-                // window.open('path-to-your-cv.pdf', '_blank');
+                e.preventDefault();
                 
-                // Temporary alert
-                alert('Función de descarga de CV - Agrega tu archivo PDF aquí');
+                // Crear un enlace temporal para forzar la descarga
+                const link = document.createElement('a');
+                link.href = 'assets/hv.docx';
+                link.download = 'CV_Brayan_Fernando_Jimenez.pdf';
+                link.target = '_blank';
+                
+                // Agregar al documento, hacer clic y eliminar
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Como fallback, abrir en nueva pestaña después de un pequeño delay
+                setTimeout(() => {
+                    window.open('assets/hv.docx', '_blank');
+                }, 100);
             });
         }
 
