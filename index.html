@@ -1,0 +1,2030 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brayan Fernando Jiménez | Ingeniero de Sistemas & AI Specialist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #3A3A3A;
+            color: #FFFFFF;
+            overflow-x: hidden;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+        }
+
+        /* ========== ANIMATED BACKGROUND ========== */
+        #animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(127, 255, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(127, 255, 0, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .circuit-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, rgba(127, 255, 0, 0.3), transparent);
+            height: 2px;
+            width: 100%;
+            animation: circuitFlow 8s linear infinite;
+        }
+
+        .circuit-line:nth-child(1) { top: 20%; animation-delay: 0s; }
+        .circuit-line:nth-child(2) { top: 40%; animation-delay: 2s; }
+        .circuit-line:nth-child(3) { top: 60%; animation-delay: 4s; }
+        .circuit-line:nth-child(4) { top: 80%; animation-delay: 6s; }
+
+        @keyframes circuitFlow {
+            0% { transform: translateX(-100%); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateX(100%); opacity: 0; }
+        }
+
+        .energy-pulse {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(127, 255, 0, 0.4), transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .energy-pulse:nth-child(5) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .energy-pulse:nth-child(6) {
+            width: 400px;
+            height: 400px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.5); opacity: 0.1; }
+        }
+
+        .binary-code {
+            position: absolute;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: rgba(127, 255, 0, 0.2);
+            animation: binaryFloat 15s linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes binaryFloat {
+            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100px) translateX(50px); opacity: 0; }
+        }
+
+        /* ========== NAVIGATION BAR ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(127, 255, 0, 0.2);
+            padding: 15px 0;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .navbar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 clamp(20px, 4vw, 60px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(18px, 3vw, 24px);
+            font-weight: 900;
+            color: #7FFF00;
+            letter-spacing: 1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: clamp(15px, 2vw, 30px);
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: clamp(12px, 1.5vw, 14px);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+            white-space: nowrap;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #7FFF00;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #7FFF00;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #7FFF00;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+        }
+
+        /* ========== WATERMARK ========== */
+        .watermark {
+            position: absolute;
+            top: clamp(20px, 5vw, 50px);
+            left: clamp(15px, 4vw, 50px);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(35px, 10vw, 180px);
+            font-weight: 900;
+            color: rgba(90, 90, 90, 0.25);
+            line-height: 0.9;
+            z-index: 0;
+            pointer-events: none;
+            letter-spacing: -3px;
+            user-select: none;
+            filter: blur(1px);
+            opacity: 0.8;
+        }
+
+        /* ========== CONTAINER ========== */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: clamp(100px, 15vh, 140px) clamp(20px, 4vw, 60px) clamp(40px, 8vh, 80px);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ========== HEADER ========== */
+        .header {
+            margin-bottom: clamp(40px, 8vh, 60px);
+            text-align: center;
+        }
+
+        .job-title {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(32px, 7vw, 85px);
+            font-weight: 900;
+            color: #FFFFFF;
+            margin-bottom: 20px;
+            letter-spacing: clamp(-1px, -0.3vw, -2px);
+            line-height: 1.1;
+            display: inline-block;
+            overflow: hidden;
+            border-right: 3px solid #7FFF00;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+            position: relative;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            max-width: 100%;
+        }
+
+        .job-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 60%;
+            height: 2px;
+            background: linear-gradient(90deg, #7FFF00 0%, transparent 100%);
+            animation: slideIn 1s ease-out 3.5s forwards;
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+
+        @keyframes slideIn {
+            to { transform: scaleX(1); }
+        }
+
+        .job-title span {
+            display: block;
+            margin-top: clamp(8px, 2vw, 12px);
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(14px, 2.8vw, 32px);
+            font-weight: 600;
+            color: #B0B0B0;
+            text-transform: uppercase;
+            letter-spacing: clamp(2px, 1vw, 6px);
+            background: none;
+            text-shadow: none;
+        }
+
+        .job-title span::before {
+            content: '// ';
+            color: #7FFF00;
+            font-weight: 700;
+            margin-right: clamp(4px, 1vw, 8px);
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #7FFF00; }
+        }
+
+        .job-title.typed {
+            border-right: none;
+            animation: none;
+        }
+
+        /* ========== PROFILE IMAGE ========== */
+        .profile-image-header {
+            max-width: 300px;
+            margin: clamp(30px, 5vh, 40px) auto;
+            position: relative;
+        }
+
+        .profile-image-container {
+            position: relative;
+            width: 100%;
+            border-radius: clamp(15px, 2.5vw, 20px);
+            overflow: hidden;
+        }
+
+        .profile-image-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(30, 30, 30, 0.4) 30%, rgba(30, 30, 30, 0.9) 100%);
+            pointer-events: none;
+        }
+
+        .profile-image {
+            width: 100%;
+            display: block;
+            height: auto;
+        }
+
+        /* ========== CONTACT INFO ========== */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: clamp(20px, 3vh, 30px) 0;
+            align-items: center;
+        }
+
+        .contact-item-inline {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #FFFFFF;
+            font-size: clamp(13px, 1.8vw, 14px);
+        }
+
+        .contact-item-inline i {
+            color: #7FFF00;
+            flex-shrink: 0;
+        }
+
+        /* ========== CTA BUTTONS ========== */
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: clamp(20px, 3vw, 30px);
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: clamp(12px, 2vw, 15px) clamp(20px, 3vw, 30px);
+            background: #7FFF00;
+            color: #000;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: clamp(12px, 1.8vw, 14px);
+            font-weight: 700;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(127, 255, 0, 0.3);
+            flex: 1 1 auto;
+            min-width: 180px;
+            max-width: 280px;
+            justify-content: center;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(127, 255, 0, 0.5);
+        }
+
+        .cta-btn.secondary {
+            background: transparent;
+            color: #7FFF00;
+            border: 2px solid #7FFF00;
+        }
+
+        .cta-btn.secondary:hover {
+            background: rgba(127, 255, 0, 0.1);
+        }
+
+        /* ========== SOCIAL LINKS ========== */
+        .social-links {
+            display: flex;
+            gap: clamp(12px, 2vw, 15px);
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: clamp(40px, 5vw, 45px);
+            height: clamp(40px, 5vw, 45px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(127, 255, 0, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7FFF00;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: #7FFF00;
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(127, 255, 0, 0.3);
+        }
+
+        /* ========== STATISTICS ========== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: clamp(15px, 2vw, 20px);
+            margin-bottom: clamp(40px, 6vh, 60px);
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: clamp(15px, 2.5vw, 20px);
+            background: rgba(127, 255, 0, 0.05);
+            border: 1px solid rgba(127, 255, 0, 0.2);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+            background: rgba(127, 255, 0, 0.1);
+            border-color: rgba(127, 255, 0, 0.4);
+        }
+
+        .stat-box .stat-number {
+            font-size: clamp(28px, 5vw, 36px);
+            font-weight: 900;
+            color: #7FFF00;
+            margin-bottom: 5px;
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+        .stat-label {
+            font-size: clamp(11px, 1.5vw, 12px);
+            color: #B0B0B0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ========== MAIN GRID ========== */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: clamp(20px, 3vw, 30px);
+            align-items: start;
+        }
+
+        /* ========== DARK CARDS ========== */
+        .dark-card {
+            background: rgba(30, 30, 30, 0.9);
+            border-radius: clamp(15px, 3vw, 25px);
+            padding: clamp(25px, 4vw, 40px);
+            backdrop-filter: blur(10px);
+            width: 100%;
+            border: 1px solid rgba(127, 255, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .dark-card:hover {
+            border-color: rgba(127, 255, 0, 0.3);
+            box-shadow: 0 0 20px rgba(127, 255, 0, 0.1);
+        }
+
+        /* ========== SECTION TITLES ========== */
+        .section-title {
+            font-size: clamp(20px, 3.5vw, 28px);
+            font-weight: 900;
+            margin-bottom: clamp(15px, 3vw, 25px);
+            letter-spacing: -0.5px;
+        }
+
+        .section-title .green {
+            color: #7FFF00;
+        }
+
+        /* ========== PROFILE CARD ========== */
+        .bio-text {
+            line-height: 1.7;
+            color: #D0D0D0;
+            font-size: clamp(14px, 1.8vw, 15px);
+        }
+
+        /* ========== EDUCATION ========== */
+        .education-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .education-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .education-title {
+            font-weight: 700;
+            font-size: clamp(14px, 2vw, 16px);
+            color: #FFFFFF;
+            margin-bottom: 5px;
+        }
+
+        .education-school {
+            color: #7FFF00;
+            font-size: clamp(13px, 1.8vw, 14px);
+            margin-bottom: 3px;
+        }
+
+        .education-date {
+            color: #888;
+            font-size: clamp(11px, 1.5vw, 12px);
+        }
+
+        /* ========== PROJECTS ========== */
+        .project-item {
+            margin-bottom: clamp(20px, 3vw, 25px);
+            padding-bottom: clamp(20px, 3vw, 25px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .project-title {
+            font-size: clamp(18px, 2.5vw, 20px);
+            font-weight: 900;
+            color: #7FFF00;
+            margin-bottom: 10px;
+        }
+
+        .project-desc {
+            color: #D0D0D0;
+            font-size: clamp(13px, 1.8vw, 14px);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: clamp(6px, 1vw, 8px);
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            background: rgba(127, 255, 0, 0.15);
+            color: #7FFF00;
+            padding: clamp(4px, 0.8vw, 5px) clamp(10px, 1.5vw, 12px);
+            border-radius: clamp(8px, 1.5vw, 12px);
+            font-size: clamp(10px, 1.2vw, 11px);
+            font-weight: 600;
+            border: 1px solid rgba(127, 255, 0, 0.3);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .project-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: clamp(10px, 1.5vw, 12px) clamp(14px, 2vw, 16px);
+            background: #7FFF00;
+            color: #000;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: clamp(11px, 1.5vw, 12px);
+            font-weight: 700;
+            transition: all 0.3s ease;
+            min-height: 44px;
+            justify-content: center;
+            flex: 1 1 auto;
+            min-width: 140px;
+        }
+
+        .project-btn:hover {
+            background: #6FEF00;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(127, 255, 0, 0.3);
+        }
+
+        .project-btn.secondary {
+            background: transparent;
+            color: #7FFF00;
+            border: 1px solid #7FFF00;
+        }
+
+        .project-btn.secondary:hover {
+            background: rgba(127, 255, 0, 0.1);
+        }
+
+        /* ========== TECH STACK ========== */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+            gap: clamp(12px, 2vw, 20px);
+        }
+
+        .tech-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            padding: 10px;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .tech-item i {
+            font-size: clamp(35px, 5vw, 45px);
+        }
+
+        .tech-item span {
+            font-size: clamp(10px, 1.2vw, 11px);
+            color: #B0B0B0;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .tech-category {
+            font-size: clamp(13px, 1.8vw, 14px);
+            color: #7FFF00;
+            margin: 20px 0 15px;
+            font-weight: 700;
+        }
+
+        .tech-category:first-child {
+            margin-top: 0;
+        }
+
+        /* ========== TIMELINE ========== */
+        .timeline-item {
+            margin-bottom: clamp(25px, 4vw, 35px);
+            padding-bottom: clamp(20px, 3vw, 30px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .timeline-title {
+            font-size: clamp(16px, 2.5vw, 18px);
+            font-weight: 900;
+            margin-bottom: 5px;
+            color: #7FFF00;
+            letter-spacing: -0.3px;
+        }
+
+        .timeline-company {
+            font-size: clamp(14px, 2vw, 16px);
+            font-weight: 600;
+            color: #FFFFFF;
+            margin-bottom: 5px;
+        }
+
+        .timeline-date {
+            font-size: clamp(12px, 1.6vw, 13px);
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        .timeline-details {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .timeline-details li {
+            color: #B0B0B0;
+            font-size: clamp(13px, 1.8vw, 14px);
+            margin-bottom: 8px;
+            padding-left: 15px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .timeline-details li::before {
+            content: '●';
+            position: absolute;
+            left: 0;
+            color: #7FFF00;
+            font-size: 10px;
+        }
+
+        /* ========== SKILLS ========== */
+        .skills h3 {
+            font-size: clamp(20px, 3vw, 24px);
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: #7FFF00;
+            letter-spacing: -0.5px;
+        }
+
+        .skills-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+
+        .skills-list li {
+            color: #B0B0B0;
+            font-size: clamp(13px, 1.8vw, 14px);
+            padding-left: 0;
+            line-height: 1.5;
+        }
+
+        /* ========== TESTIMONIALS ========== */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: clamp(15px, 2vw, 20px);
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(127, 255, 0, 0.2);
+            border-radius: 20px;
+            padding: clamp(20px, 3vw, 25px);
+            position: relative;
+        }
+
+        .testimonial-quote {
+            font-size: clamp(13px, 1.8vw, 14px);
+            line-height: 1.7;
+            color: #D0D0D0;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .testimonial-author strong {
+            color: #7FFF00;
+            font-size: clamp(13px, 1.8vw, 14px);
+        }
+
+        .testimonial-author span {
+            color: #888;
+            font-size: clamp(11px, 1.5vw, 12px);
+        }
+
+        /* ========== CERTIFICATIONS ========== */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .cert-badge {
+            background: rgba(127, 255, 0, 0.05);
+            border: 2px solid rgba(127, 255, 0, 0.3);
+            border-radius: 15px;
+            padding: clamp(15px, 2.5vw, 20px);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .cert-badge:hover {
+            background: rgba(127, 255, 0, 0.1);
+            border-color: #7FFF00;
+            transform: scale(1.05);
+        }
+
+        .cert-icon {
+            font-size: clamp(35px, 5vw, 40px);
+            color: #7FFF00;
+            margin-bottom: 10px;
+        }
+
+        .cert-name {
+            font-size: clamp(12px, 1.6vw, 13px);
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 3px;
+        }
+
+        .cert-issuer {
+            font-size: clamp(10px, 1.4vw, 11px);
+            color: #888;
+        }
+
+        /* ========== REFERENCES ========== */
+        .references-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: clamp(20px, 3vw, 25px);
+        }
+
+        .ref-category h4 {
+            font-size: clamp(14px, 2vw, 16px);
+            font-weight: 700;
+            color: #7FFF00;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ref-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .ref-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .ref-name {
+            font-weight: 600;
+            font-size: clamp(13px, 1.8vw, 14px);
+            color: #FFFFFF;
+            margin-bottom: 3px;
+        }
+
+        .ref-phone {
+            font-size: clamp(12px, 1.6vw, 13px);
+            color: #B0B0B0;
+        }
+
+        /* ========== CONTACT FORM ========== */
+        .contact-form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: clamp(12px, 1.6vw, 13px);
+            font-weight: 600;
+            color: #7FFF00;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: clamp(10px, 1.5vw, 12px) clamp(14px, 2vw, 16px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(13px, 1.8vw, 14px);
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #7FFF00;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: clamp(12px, 2vw, 14px);
+            background: #7FFF00;
+            color: #000;
+            border: none;
+            border-radius: 10px;
+            font-size: clamp(12px, 1.8vw, 14px);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 48px;
+        }
+
+        .submit-btn:hover {
+            background: #6FEF00;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(127, 255, 0, 0.3);
+        }
+
+        /* ========== CONTACT FOOTER ========== */
+        .contact-footer {
+            display: flex;
+            gap: clamp(15px, 3vw, 30px);
+            margin-top: clamp(30px, 5vw, 50px);
+            padding-top: clamp(20px, 3vw, 30px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: clamp(13px, 1.8vw, 14px);
+        }
+
+        .contact-item i {
+            background: #7FFF00;
+            color: #000000;
+            width: clamp(32px, 4vw, 35px);
+            height: clamp(32px, 4vw, 35px);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            text-align: center;
+            padding: clamp(20px, 3vw, 30px);
+            margin-top: clamp(30px, 5vw, 50px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            color: #888;
+            font-size: clamp(12px, 1.8vw, 14px);
+        }
+
+        /* ========== BACK TO TOP ========== */
+        .back-to-top {
+            position: fixed;
+            bottom: clamp(20px, 3vw, 30px);
+            right: clamp(20px, 3vw, 30px);
+            width: clamp(45px, 6vw, 50px);
+            height: clamp(45px, 6vw, 50px);
+            background: #7FFF00;
+            color: #000;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(127, 255, 0, 0.3);
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(127, 255, 0, 0.5);
+        }
+
+        /* ========== ANIMATIONS ========== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========== VERTICAL TEXT ========== */
+        .vertical-text {
+            display: none;
+        }
+
+        /* ========== RESPONSIVE BREAKPOINTS ========== */
+        
+        /* Tablets and up */
+        @media (min-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .main-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-info {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .vertical-text {
+                display: block;
+                position: fixed;
+                right: 30px;
+                top: 50%;
+                transform: translateY(-50%) rotate(90deg);
+                font-family: 'Inter', sans-serif;
+                font-size: 12px;
+                font-weight: 700;
+                letter-spacing: 3px;
+                color: rgba(255, 255, 255, 0.3);
+                text-transform: uppercase;
+            }
+        }
+
+        /* Desktop */
+        @media (min-width: 1024px) {
+            .main-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            .project-links {
+                flex-wrap: nowrap;
+            }
+
+            .project-btn {
+                flex: 0 1 auto;
+            }
+        }
+
+        /* Mobile specific */
+        @media (max-width: 767px) {
+            .nav-menu {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: rgba(30, 30, 30, 0.98);
+                padding: 20px;
+                gap: 15px;
+                display: none;
+                border-bottom: 1px solid rgba(127, 255, 0, 0.2);
+                max-height: calc(100vh - 60px);
+                overflow-y: auto;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .watermark {
+                opacity: 0.5;
+                filter: blur(2px);
+            }
+
+            .job-title {
+                white-space: normal;
+                border-right: none;
+                animation: none;
+            }
+
+            .job-title::after {
+                left: 50%;
+                transform: translateX(-50%) scaleX(0);
+                animation: slideInCenter 1s ease-out 0.5s forwards;
+            }
+
+            @keyframes slideInCenter {
+                to {
+                    transform: translateX(-50%) scaleX(1);
+                }
+            }
+
+            .project-links {
+                flex-direction: column;
+            }
+
+            .project-btn {
+                width: 100%;
+                min-width: auto;
+            }
+
+            .contact-footer {
+                flex-direction: column;
+            }
+
+            .contact-item {
+                width: 100%;
+                justify-content: flex-start;
+            }
+        }
+
+        /* Small mobile */
+        @media (max-width: 480px) {
+            .tech-grid {
+                grid-template-columns: repeat(3, 1fr) !important;
+            }
+
+            .cta-btn {
+                min-width: auto;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+
+        /* Touch devices */
+        @media (hover: none) and (pointer: coarse) {
+            .project-btn,
+            .cta-btn,
+            .submit-btn,
+            .social-link,
+            .back-to-top {
+                min-height: 48px;
+                min-width: 48px;
+            }
+
+            .nav-menu a {
+                padding: 10px 0;
+            }
+
+            .contact-item,
+            .ref-item {
+                min-height: 48px;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .navbar,
+            .back-to-top,
+            .watermark,
+            .vertical-text,
+            .mobile-menu-toggle,
+            #animated-bg {
+                display: none !important;
+            }
+
+            .container {
+                padding-top: 20px;
+            }
+
+            .dark-card {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div id="animated-bg">
+        <canvas class="bg-canvas" id="particleCanvas"></canvas>
+        <div class="grid-overlay"></div>
+        <div class="circuit-line"></div>
+        <div class="circuit-line"></div>
+        <div class="circuit-line"></div>
+        <div class="circuit-line"></div>
+        <div class="energy-pulse"></div>
+        <div class="energy-pulse"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">PORTAFOLIO PROFESIONAL</div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                <i data-lucide="menu" size="24"></i>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#perfil">Perfil</a></li>
+                <li><a href="#formacion">Formación</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#experiencia">Experiencia</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Volver arriba">
+        <i data-lucide="arrow-up" size="24"></i>
+    </button>
+
+    <!-- Vertical Text -->
+    <div class="vertical-text" aria-hidden="true">Portafolio 2026</div>
+
+    <!-- Main Container -->
+    <div class="container">
+        
+        <!-- Header -->
+        <div class="header" id="inicio">
+            <h1 class="job-title">
+                Ingeniero de Sistemas
+                <span>Full Stack Developer</span>
+            </h1>
+            
+            <!-- Profile Image -->
+            <div class="profile-image-header">
+                <div class="profile-image-container">
+                    <img src="assets/fernando.png" alt="Brayan Fernando Jiménez" class="profile-image" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=800&q=80'" loading="lazy">
+                </div>
+            </div>
+            
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <div class="contact-item-inline">
+                    <i data-lucide="map-pin" size="18"></i>
+                    <span>Bogotá, Colombia</span>
+                </div>
+                <div class="contact-item-inline">
+                    <i data-lucide="phone" size="18"></i>
+                    <span>+57 318 260 2764</span>
+                </div>
+                <div class="contact-item-inline">
+                    <i data-lucide="mail" size="18"></i>
+                    <span>brayanjimenez3627@gmail.com</span>
+                </div>
+            </div>
+            
+            <!-- Social Links -->
+            <div class="social-links">
+                <a href="https://github.com/fercho321123" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">
+                    <i data-lucide="github" size="20"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/brayan-fernando-jim%C3%A9nez-murcia-893b34289?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn">
+                    <i data-lucide="linkedin" size="20"></i>
+                </a>
+                <a href="mailto:brayanjimenez3627@gmail.com" class="social-link" title="Email">
+                    <i data-lucide="mail" size="20"></i>
+                </a>
+                <a href="https://wa.me/573182602764" target="_blank" rel="noopener noreferrer" class="social-link" title="WhatsApp">
+                    <i data-lucide="phone" size="20"></i>
+                </a>
+            </div>
+            
+            <!-- CTA Buttons -->
+            <div class="cta-buttons">
+                <a href="#contacto" class="cta-btn">
+                    Contáctame
+                    <i data-lucide="message-circle" size="18"></i>
+                </a>
+                <a href="assets/hv.docx" target="_blank" rel="noopener noreferrer" class="cta-btn secondary">
+                    Descargar CV
+                    <i data-lucide="download" size="18"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Statistics Section -->
+        <section class="fade-in" id="estadisticas">
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number" data-target="2">0</div>
+                    <div class="stat-label">Proyectos Completos</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" data-target="1">0</div>
+                    <div class="stat-label">Años Experiencia</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" data-target="15">0</div>
+                    <div class="stat-label">Tecnologías</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-label">% Satisfacción</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Grid -->
+        <div class="main-grid">
+            
+            <!-- Perfil Profesional -->
+            <div class="dark-card fade-in" id="perfil">
+                <h3 class="section-title">PERFIL <span class="green">PROFESIONAL</span></h3>
+                <p class="bio-text">
+                    Ingeniero de Sistemas egresado de la Universidad de Cundinamarca y Tecnólogo en Análisis y Desarrollo de Software en formación (SENA). Cuento con experiencia técnica integral que abarca desde el soporte de infraestructura hasta el desarrollo de soluciones Full Stack utilizando TypeScript, React, Node.js, Python y Django.
+
+He liderado el desarrollo de plataformas empresariales personalizadas, incluyendo sistemas de gestión de información (ERP) para agencias de marketing con módulos de finanzas, gestión de empleados y clientes. Actualmente me especializo en la extensión de módulos para Odoo y en la integración de Inteligencia Artificial para la analítica de datos.
+
+Poseo conocimientos sólidos en bases de datos relacionales y no relacionales (PostgreSQL, MySQL, MongoDB), así como en el despliegue de aplicaciones mediante Docker y control de versiones con GitHub. Me destaco por mi capacidad de resolución de problemas complejos, creatividad y disposición para el trabajo en equipo en entornos de alta exigencia tecnológica.
+                </p>
+            </div>
+            
+            <!-- Formación Académica -->
+            <div class="dark-card fade-in" id="formacion">
+                <h3 class="section-title">FORMACIÓN <span class="green">ACADÉMICA</span></h3>
+                
+                <div class="education-item">
+                    <div class="education-title">Ingeniería en Sistemas</div>
+                    <div class="education-school">Universidad de Cundinamarca</div>
+                    <div class="education-date">Graduación 2027</div>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-title">Tecnólogo en Análisis y Desarrollo de Software</div>
+                    <div class="education-school">SENA</div>
+                    <div class="education-date">En curso</div>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-title">Técnico en Contabilidad y Finanzas</div>
+                    <div class="education-school">SENA</div>
+                    <div class="education-date">Finalizado</div>
+                </div>
+                
+                <div class="education-item">
+                    <div class="education-title">Aplicación de la Inteligencia Artificial en la Integración de Datos</div>
+                    <div class="education-school">SENA</div>
+                    <div class="education-date">finalizado</div>
+                </div>
+            </div>
+
+            <!-- Certificaciones -->
+            <div class="dark-card fade-in">
+                <h3 class="section-title"><span class="green">CERTIFICACIONES</span></h3>
+                <div class="certifications-grid">
+                    <div class="cert-badge">
+                        <div class="cert-icon">
+                            <i data-lucide="award" size="40"></i>
+                        </div>  
+                        <div class="cert-name">Ingeniero en sistemas</div>
+                        <div class="cert-issuer"><u>Universidad de Cundinamarca</u></div>
+                    </div>
+                    <div class="cert-badge">
+                        <div class="cert-icon">
+                            <i data-lucide="brain" size="40"></i>
+                        </div>
+                </div>
+            </div>
+
+            <!-- Proyectos Destacados -->
+            <div class="dark-card fade-in" id="proyectos">
+                <h3 class="section-title"><span class="green">PROYECTO</span> DESTACADO</h3>
+                
+                <div class="project-item">
+                    <div class="project-title">FJonic Studio Marketing</div>
+                    <p class="project-desc">
+                        Plataforma integral que incluye Landing Page corporativa y una aplicación web privada de gestión. Módulos de proyectos, clientes, facturación electrónica y control financiero.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">Next.js</span>
+                        <span class="tag">Django</span>
+                        <span class="tag">Neon DB</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://fjonic-public.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-btn">
+                            Landing Page
+                            <i data-lucide="external-link" size="14"></i>
+                        </a>
+                        <a href="https://fjonic-admin.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-btn secondary">
+                            App Privada
+                            <i data-lucide="lock" size="14"></i>
+                        </a>
+                        <a href="https://github.com/fercho321123/plataformaweb-FJonic-studio.git" target="_blank" rel="noopener noreferrer" class="project-btn secondary">
+                            <i data-lucide="github" size="16"></i>
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+                        <!-- Proyectos Destacados -->
+
+                        <div class="dark-card fade-in" id="proyectos">
+                            <h3 class="section-title"><span class="green">PROYECTO</span> DESTACADO</h3>
+                            <div class="project-item">
+                                <div class="project-title">Terranza landing page</div>
+                                <p class="project-desc">
+                                    Landing page elegante y completamente responsive para una marca premium de café colombiano. El sitio presenta una experiencia visual sofisticada con animaciones fluidas, slideshow interactivo, galería de productos con efectos hover, y un sistema de carrito de compras funcional.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="tag">HTML5</span>
+                                    <span class="tag">CSS3 </span>
+                                    <span class="tag">JavaScript Vanilla</span>
+                                    <span class="tag">Font Awesome</span>
+                                    <span class="tag">Google Fonts</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://terranza.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-btn">
+                                        Landing Page
+                                        <i data-lucide="external-link" size="14"></i>
+                                    </a>
+                                    <a href="https://github.com/fercho321123/terranza.git" target="_blank" rel="noopener noreferrer" class="project-btn secondary">
+                                        <i data-lucide="github" size="16"></i>
+                                        GitHub
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+            <!-- Trayectoria Profesional -->
+            <div class="dark-card fade-in" id="experiencia">
+                <h3 class="section-title">TRAYECTORIA <span class="green">PROFESIONAL</span></h3>
+                
+                <div class="timeline-item">
+                    <div class="timeline-title">DESARROLLADOR FULL STACK</div>
+                    <div class="timeline-company">Agencia de Marketing Digital (Independiente)</div>
+                    <div class="timeline-date">2025 – 2026 Terminado</div>
+                    <ul class="timeline-details">
+                        <li>Desarrollo de Landing Pages y dashboards administrativos privados.</li>
+                        <li>Implementación de procedimientos de instalación estandarizados.</li>
+                        <li>Gestión de facturación electrónica y control financiero preciso.</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-title">TÉCNICO DE SOPORTE TI</div>
+                    <div class="timeline-company">NEW.COM</div>
+                    <div class="timeline-date">2024 – 2025</div>
+                    <ul class="timeline-details">
+                        <li>Resolución autónoma de problemas de hardware y software en impresoras, portátiles y torres corporativas.</li>
+                        <li>Reducción de tiempos de inactividad mediante soluciones técnicas efectivas.</li>
+                        <li>Implementación de procedimientos de instalación estandarizados.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tech Stack -->
+            <div class="dark-card fade-in" id="habilidades">
+                <h3 class="section-title"><span class="green">TECH</span> STACK</h3>
+                
+                <h4 class="tech-category">Desarrollo Web</h4>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <i class="devicon-typescript-plain colored"></i>
+                        <span>TypeScript</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="devicon-react-original colored"></i>
+                        <span>React</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="devicon-nextjs-plain" style="color: #fff;"></i>
+                        <span>Next.js</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="devicon-nodejs-plain colored"></i>
+                        <span>Node.js</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="devicon-html5-plain colored"></i>
+                        <span>HTML5</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="devicon-css3-plain colored"></i>
+                        <span>CSS3</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="devicon-vercel-line" style="color: #fff;"></i>
+                        <span>Vercel</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="devicon-django-plain colored"></i>
+                        <span>Django</span>
+                    </div>
+                </div>
+
+                <h4 class="tech-category">IA & Datos</h4>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <i class="devicon-python-plain colored"></i>
+                        <span>Python</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="devicon-pandas-plain colored"></i>
+                        <span>Pandas</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="devicon-numpy-plain colored"></i>
+                        <span>NumPy</span>
+                    </div>
+                    <div class="tech-item">
+                        <i data-lucide="bot" size="45" style="color: #7FFF00;"></i>
+                        <span>IA SENA</span>
+                    </div>
+                </div>
+
+                <h4 class="tech-category">Bases de Datos</h4>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <i class="devicon-postgresql-plain colored"></i>
+                        <span>PostgreSQL</span>
+                    </div>
+                    <div class="tech-item">
+                        <i data-lucide="database" size="45" style="color: #7FFF00;"></i>
+                        <span>Neon DB</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="devicon-mysql-plain colored"></i>
+                        <span>MySQL</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="devicon-firebase-plain colored"></i>
+                        <span>Firebase</span>
+                    </div>
+                </div>
+
+                <h4 class="tech-category">Herramientas</h4>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <i class="devicon-github-original" style="color: #fff;"></i>
+                        <span>GitHub</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="devicon-postman-plain colored"></i>
+                        <span>Postman</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Habilidades -->
+            <div class="dark-card skills fade-in">
+                <h3>HABILIDADES</h3>
+                <ul class="skills-list">
+                    <li>Desarrollo Full Stack</li>
+                    <li>React & Next.js</li>
+                    <li>Node.js & Django</li>
+                    <li>Arquitectura de Software</li>
+                    <li>TypeScript & JavaScript</li>
+                    <li>PostgreSQL, MySQL, Neon DB</li>
+                    <li>Inteligencia Artificial</li>
+                    <li>Python & Data Analysis</li>
+                    <li>HTML5 & tailwind CSS</li>
+                    <li>DevOps & CI/CD</li>
+                    <li>Git & GitHub</li>
+                    <li>API RESTful</li>
+                    <li>UI/UX Design</li>
+                    <li>Vercel & Firebase</li>
+                    <li>Postman & Testing</li>
+                </ul>
+            </div>
+
+            <!-- Testimonios -->
+            <div class="dark-card fade-in" id="testimonios">
+                <h3 class="section-title"><span class="green">TESTIMONIOS</span></h3>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">
+                            "Brayan demostró gran profesionalismo y capacidad técnica en el desarrollo de aplicaciones en la universidad y se caracterizó por su compromiso y su gran carisma para trabajar en equipo."
+                        </p>
+                        <div class="testimonial-author">
+                            <div>
+                                <strong>Edwin Leiba</strong><br>
+                                <span>Compañero de universidad</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">
+                            "Excelente profesional. Trabajamos juntos en mantenimiento de hardware, software e impresoras, y siempre destacó por su capacidad técnica y su impecable atención al cliente. Es resolutivo y con gran disposición al equipo."
+                        </p>
+                        <div class="testimonial-author">
+                            <div>
+                                <strong>Jhanio Mesa</strong><br>
+                                <span>Ingeniero en telecomunicaciones</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Referencias -->
+            <div class="dark-card fade-in">
+                <h3 class="section-title">REFERENCIAS</h3>
+                
+                <div class="references-grid">
+                    <div class="ref-category">
+                        <h4>
+                            <i data-lucide="users" size="18"></i>
+                            Personales
+                        </h4>
+                        <div class="ref-list">
+                            <div class="ref-item">
+                                <div class="ref-name">Edwin Alexis Leiba Bello</div>
+                                <div class="ref-phone">3227297639</div>
+                            </div>
+                            <div class="ref-item">
+                                <div class="ref-name">Jhanio Mesa</div>
+                                <div class="ref-phone">3249673783</div>
+                            </div>
+                            <div class="ref-item">
+                                <div class="ref-name">Edward Nicolas Ramirez</div>
+                                <div class="ref-phone">3022881375</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ref-category">
+                        <h4>
+                            <i data-lucide="heart" size="18"></i>
+                            Familiares
+                        </h4>
+                        <div class="ref-list">
+                            <div class="ref-item">
+                                <div class="ref-name">Luz Angela Murcia Marquez</div>
+                                <div class="ref-phone">3203525948</div>
+                            </div>
+                            <div class="ref-item">
+                                <div class="ref-name">Edwin Fernando Jimenez</div>
+                                <div class="ref-phone">3045612962</div>
+                            </div>
+                            <div class="ref-item">
+                                <div class="ref-name">Duvan Ortiz Murcia</div>
+                                <div class="ref-phone">3163795026</div>
+                            </div>
+                            <div class="ref-item">
+                                <div class="ref-name">Yuli Johana Rodriguez Benitez</div>
+                                <div class="ref-phone">3204096794</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contacto -->
+            <div class="dark-card fade-in" id="contacto">
+                <h3 class="section-title"><span class="green">CONTACTO</span></h3>
+                <p class="bio-text" style="margin-bottom: 20px;">
+                    ¿Tienes un proyecto en mente? Estoy disponible para nuevos retos profesionales. ¡Hablemos!
+                </p>
+                
+                <form action="https://formspree.io/f/mreqleyw" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ej. Juan Pérez" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="juan@ejemplo.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" class="form-control" placeholder="¿Cómo puedo ayudarte?" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        Enviar Mensaje
+                        <i data-lucide="send" size="18"></i>
+                    </button>
+                    <input type="hidden" name="_next" value="https://portafolio-three-beryl.vercel.app/">
+                </form>
+            </div>
+
+        </div>
+
+        <!-- Contact Footer -->
+        <div class="contact-footer">
+            <a href="mailto:brayanjimenez3627@gmail.com" class="contact-item">
+                <i data-lucide="mail"></i>
+                <span>brayanjimenez3627@gmail.com</span>
+            </a>
+            <a href="tel:+573182602764" class="contact-item">
+                <i data-lucide="phone"></i>
+                <span>+57 318 260 2764</span>
+            </a>
+            <div class="contact-item">
+                <i data-lucide="map-pin"></i>
+                <span>Bogotá, Colombia</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Brayan Fernando Jiménez Murcia. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // ========== PARTICLE ANIMATION ==========
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 100;
+        const connectionDistance = 150;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 2 + 1;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(127, 255, 0, 0.5)';
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function connectParticles() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < connectionDistance) {
+                        const opacity = 1 - (distance / connectionDistance);
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(127, 255, 0, ${opacity * 0.2})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            
+            connectParticles();
+            
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Generate binary codes
+        function generateBinaryCodes() {
+            const binaryContainer = document.getElementById('animated-bg');
+            const binaryCount = 10;
+            
+            for (let i = 0; i < binaryCount; i++) {
+                const binary = document.createElement('div');
+                binary.className = 'binary-code';
+                binary.style.left = Math.random() * 100 + '%';
+                binary.style.animationDelay = Math.random() * 15 + 's';
+                
+                let code = '';
+                for (let j = 0; j < 20; j++) {
+                    code += Math.random() > 0.5 ? '1' : '0';
+                }
+                binary.textContent = code;
+                
+                binaryContainer.appendChild(binary);
+            }
+        }
+
+        generateBinaryCodes();
+
+        // Remove typing cursor after animation completes
+        setTimeout(() => {
+            const jobTitle = document.querySelector('.job-title');
+            if (jobTitle) {
+                jobTitle.classList.add('typed');
+            }
+        }, 3500);
+
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        if (mobileMenuToggle && navMenu) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const icon = mobileMenuToggle.querySelector('i');
+                if (navMenu.classList.contains('active')) {
+                    icon.setAttribute('data-lucide', 'x');
+                } else {
+                    icon.setAttribute('data-lucide', 'menu');
+                }
+                lucide.createIcons();
+            });
+
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    const icon = mobileMenuToggle.querySelector('i');
+                    icon.setAttribute('data-lucide', 'menu');
+                    lucide.createIcons();
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!navMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                    navMenu.classList.remove('active');
+                    const icon = mobileMenuToggle.querySelector('i');
+                    icon.setAttribute('data-lucide', 'menu');
+                    lucide.createIcons();
+                }
+            });
+        }
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+
+        if (backToTop) {
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTop.classList.add('visible');
+                } else {
+                    backToTop.classList.remove('visible');
+                }
+            });
+
+            backToTop.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Statistics Counter Animation
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.stat-number');
+                    counters.forEach(counter => {
+                        const target = parseInt(counter.getAttribute('data-target'));
+                        const increment = target / 50;
+                        let current = 0;
+
+                        const updateCounter = () => {
+                            if (current < target) {
+                                current += increment;
+                                counter.textContent = Math.floor(current);
+                                setTimeout(updateCounter, 30);
+                            } else {
+                                counter.textContent = target;
+                            }
+                        };
+
+                        updateCounter();
+                    });
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.getElementById('estadisticas');
+        if (statsSection) {
+            counterObserver.observe(statsSection);
+        }
+
+        // Hide/Show Navbar on Scroll
+        let lastScroll = 0;
+        const navbar = document.querySelector('.navbar');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                navbar.classList.add('hidden');
+            } else {
+                navbar.classList.remove('hidden');
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Download CV functionality
+        const downloadCvBtn = document.querySelector('.cta-btn.secondary');
+        if (downloadCvBtn && downloadCvBtn.href.includes('assets/hv.docx')) {
+            downloadCvBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                const link = document.createElement('a');
+                link.href = 'assets/hv.docx';
+                link.download = 'CV_Brayan_Fernando_Jimenez.docx';
+                link.target = '_blank';
+                
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                setTimeout(() => {
+                    window.open('assets/hv.docx', '_blank');
+                }, 100);
+            });
+        }
+
+        document.body.style.overflowX = 'hidden';
+    </script>
+</body>
+</html>
